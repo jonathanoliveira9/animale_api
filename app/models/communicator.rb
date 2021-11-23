@@ -1,0 +1,2 @@
+class Communicator < ApplicationRecord
+end
