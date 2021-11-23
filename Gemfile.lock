@@ -160,6 +160,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
+    rack-attack (6.5.0)
+      rack (>= 1.0, < 3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.1.4.1)
@@ -226,6 +228,7 @@ DEPENDENCIES
   pagy (~> 5.5)
   pg (~> 1.1)
   puma (~> 5.0)
+  rack-attack
   rails (~> 6.1.4, >= 6.1.4.1)
   redis (~> 4.0)
   rspec-core!
