@@ -1,3 +1,3 @@
 require 'pagy/extras/array'
 
-Pagy::VARS[:items] = 20
+Pagy::DEFAULT[:items] = 10
