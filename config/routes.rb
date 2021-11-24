@@ -11,4 +11,11 @@ Rails.application.routes.draw do
   Sidekiq::Web.use ActionDispatch::Session::CookieStore, key: '_interslice_session'
 
   mount Sidekiq::Web => '/sidekiq'
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :animals, only: %w[index]
+      resources :communicators, only: %[create]
+    end
+  end
 end
