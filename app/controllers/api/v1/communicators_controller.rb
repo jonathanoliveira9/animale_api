@@ -2,11 +2,12 @@ class Api::V1::CommunicatorsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    animal = Communicator.new(communicator_params)
-    if animal.save
-      render json: animal, status: :created
+    communicator = Communicator.new(communicator_params)
+    if communicator.save && communicator.animal.communicated!
+
+      render json: communicator, status: :created
     else
-      render json: { errors: animal.errors }, status: :unprocessable_entity
+      render json: { errors: communicator.errors }, status: :unprocessable_entity
     end
   end
 

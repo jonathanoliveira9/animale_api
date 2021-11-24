@@ -17,6 +17,11 @@ RSpec.describe Api::V1::CommunicatorsController, type: :controller do
       expect(response).to have_http_status(:created)
     end
 
+    it 'should the animal change to communicated' do
+      post :create, params: { communicator: attributes }, format: :json
+      expect(animal.reload.status).to eq('communicated')
+    end
+
     it 'should not create communicators without name' do
       attributes.delete(:name)
       post :create, params: { communicator: attributes }, format: :json
