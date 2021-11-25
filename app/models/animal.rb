@@ -5,4 +5,12 @@ class Animal < ApplicationRecord
   enum status: { lost: 0, communicated: 1, found: 2 }
 
   validates :name, :status, presence: true
+
+  after_save :notify_changes_status, if: proc { status_changed? }
+
+  private
+
+  def notify_changes_status
+    Animal::NotificationWorker.perform_async(id)
+  end
 end
