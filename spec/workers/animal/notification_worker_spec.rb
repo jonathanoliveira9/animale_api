@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Animal::NotificationWorker, type: :worker do
-  it 'enqueues a communication worker' do
+  it 'enqueues the notification worker' do
     animal = create(:animal)
     expect {
       Animal::NotificationWorker.perform_async(animal.id)
