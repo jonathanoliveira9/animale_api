@@ -6,11 +6,16 @@ class Users::SessionsController < Devise::SessionsController
   def respond_with(resource, _opts = {})
     login_success && return if resource.persisted?
 
-    logout_out_failure
+    login_failure
   end
+
 
   def login_success
     render json: { message: 'You are logged in', user: current_user }, status: :ok
+  end
+
+  def login_failure
+    render json: { message: 'Failed to login' }, status: :unauthorized
   end
 
   def respond_to_on_destroy
