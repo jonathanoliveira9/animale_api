@@ -4,7 +4,7 @@ class CreateAnimals < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :age
       t.string :extra_information
-      t.integer :status
+      t.integer :status, default: 0
       t.integer :user_id
 
       t.timestamps
