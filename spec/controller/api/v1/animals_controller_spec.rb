@@ -5,12 +5,9 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
   include ApiHelper
   let(:user) { create(:user) }
 
-  before do
-    authenticated_header(request, user)
-  end
-
   describe 'GET #index' do
     it 'should show animals with status not found' do
+      authenticated_header(request, user)
       create_list(:animal, 5, :lost)
       get :index, format: :json
       expect(response).to have_http_status(:ok)
@@ -21,35 +18,37 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
 
   describe 'POST #create' do
     let(:user) { create(:user) }
-    let(:attributes) { attributes_for(:animal).merge(user_id: user.id) }
+    let(:attributes) { attributes_for(:animal) }
     it 'should create animal' do
+      authenticated_header(request, user)
       post :create, params: { animal: attributes }, format: :json
       expect(response).to have_http_status(:created)
     end
 
     it 'should forbid create animal' do
+      authenticated_header(request, user)
       attributes.delete(:name)
       post :create, params: { animal: attributes }, format: :json
       expect(response).to have_http_status(:forbidden)
     end
 
-    it 'should forbid grade animal without user' do
-      attributes.delete(:user_id)
+    it 'should forbid animal without current_user' do
       post :create, params: { animal: attributes }, format: :json
-      expect(response).to have_http_status(:forbidden)
+      expect(response).to have_http_status(:unauthorized)
     end
   end
 
   describe 'PUT #update' do
     let(:animal) { create(:animal) }
     it 'should update animal' do
+      authenticated_header(request, user)
       patch :update, params: { id: animal.id, animal: { name: Faker::JapaneseMedia::OnePiece.character } }, format: :json
       expect(response).to have_http_status(:success)
     end
 
-    it 'should forbid update grade without current_user' do
-      patch :update, params: { id: animal.id, animal: { user_id: nil } }, format: :json
-      expect(response).to have_http_status(:forbidden)
+    it 'should forbid update animal without current_user' do
+      patch :update, params: { id: animal.id, animal: { name: Faker::JapaneseMedia::OnePiece.character } }, format: :json
+      expect(response).to have_http_status(:unauthorized)
     end
   end
 end

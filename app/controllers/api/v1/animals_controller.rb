@@ -11,7 +11,7 @@ class Api::V1::AnimalsController < ApplicationController
 
   def create
     animal = Animal.new(animal_params)
-
+    animal.user_id = current_user.id
     if animal.save
       render json: animal, status: :created
     else
@@ -34,6 +34,6 @@ class Api::V1::AnimalsController < ApplicationController
   end
 
   def animal_params
-    params.require(:animal).permit(:name, :age, :extra_information, :status, :user_id)
+    params.require(:animal).permit(:name, :age, :extra_information, :status)
   end
 end
