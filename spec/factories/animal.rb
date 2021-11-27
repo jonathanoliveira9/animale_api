@@ -2,20 +2,19 @@ FactoryBot.define do
   factory :animal do
     name { Faker::JapaneseMedia::OnePiece.character }
     age  { Faker::Number.non_zero_digit }
-    extra_information {}
-    status { 0 }
+    extra_information { Faker::Lorem.paragraph_by_chars }
     user { association :user }
   end
 
   trait :lost do
-    status { 0 }
+    status { 'lost' }
   end
 
   trait :communicated do
-    status { 1 }
+    status { 'communicated' }
   end
 
   trait :found do
-    status { 2 }
+    status { 'found' }
   end
 end
