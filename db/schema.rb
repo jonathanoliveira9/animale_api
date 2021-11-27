@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_11_24_011850) do
     t.string "name"
     t.integer "age"
     t.string "extra_information"
-    t.integer "status"
+    t.integer "status", default: 0
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_11_24_011850) do
     t.string "name"
     t.string "phone"
     t.string "city"
-    t.string "state"
+    t.string "country"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
