@@ -10,7 +10,8 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def login_success
-    render json: { message: 'You are logged in', user: current_user }, status: :ok
+    render json: { message: 'You are logged in',
+                   user: UserSerializer.new(current_user).serializable_hash }, status: :ok
   end
 
   def login_failure
@@ -28,6 +29,12 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def logout_out_failure
-    render json: { message: 'Failure to logout'}, status: :unauthorized
+    render json: { message: 'Failure to logout' }, status: :unauthorized
+  end
+
+  def nested_relationship
+    options = {}
+    options[:include] = [:communicators]
+    options
   end
 end
