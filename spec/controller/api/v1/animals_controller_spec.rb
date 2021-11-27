@@ -39,4 +39,17 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       expect(response).to have_http_status(:forbidden)
     end
   end
+
+  describe 'PUT #update' do
+    let(:animal) { create(:animal) }
+    it 'should update animal' do
+      patch :update, params: { id: animal.id, animal: { name: Faker::JapaneseMedia::OnePiece.character } }, format: :json
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'should forbid update grade without current_user' do
+      patch :update, params: { id: animal.id, animal: { user_id: nil } }, format: :json
+      expect(response).to have_http_status(:forbidden)
+    end
+  end
 end

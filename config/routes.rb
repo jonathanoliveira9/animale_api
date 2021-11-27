@@ -19,8 +19,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :animals, only: %w[index create]
-      resources :communicators, only: %[create]
+      resources :animals, only: %w[index create update]
+      resources :communicators, only: %w[create]
     end
   end
 end

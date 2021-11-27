@@ -1,6 +1,7 @@
 class Api::V1::AnimalsController < ApplicationController
   include Paginable
-  before_action :authenticate_user!, only: :create
+  before_action :authenticate_user!, only: %i[create update]
+  before_action :find_animal, only: [:update]
 
   def index
     @pagy, @animals = pagy(Animal.where(status: 'lost'), items: per_page, page: current_page)
@@ -18,7 +19,19 @@ class Api::V1::AnimalsController < ApplicationController
     end
   end
 
+  def update
+    if @animal.update(animal_params)
+      render json: @animal
+    else
+      render json: @animal.errors, status: :forbidden
+    end
+  end
+
   private
+
+  def find_animal
+    @animal = Animal.find(params[:id])
+  end
 
   def animal_params
     params.require(:animal).permit(:name, :age, :extra_information, :status, :user_id)
