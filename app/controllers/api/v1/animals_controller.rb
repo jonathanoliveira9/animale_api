@@ -1,6 +1,6 @@
 class Api::V1::AnimalsController < ApplicationController
   include Paginable
-  before_action :authenticate_user!, only: %i[create update]
+  before_action :authenticate_user!, only: %i[create update owner_pets]
   before_action :find_animal, only: [:update]
 
   def index
@@ -25,6 +25,13 @@ class Api::V1::AnimalsController < ApplicationController
     else
       render json: @animal.errors, status: :forbidden
     end
+  end
+
+  def owner_pets
+    options = {}
+    options[:include] = [:communicators]
+    animals = Animal.includes(:communicators).where(user_id: current_user)
+    render json: AnimalSerializer.new(animals, options).serializable_hash
   end
 
   private

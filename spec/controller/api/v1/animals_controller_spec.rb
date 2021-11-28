@@ -51,4 +51,13 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
       expect(response).to have_http_status(:unauthorized)
     end
   end
+
+  describe 'GET #owner_pets' do
+    it 'should return animals owner' do
+      authenticated_header(request, user)
+      create_list(:animal, 10, user_id: user.id)
+      get :owner_pets
+      expect(response).to have_http_status(:success)
+    end
+  end
 end
