@@ -6,5 +6,5 @@ class User < ApplicationRecord
          jwt_revocation_strategy: JwtDenylist
   has_many :animals
 
-  validates :name, :email, :phone, :city, :country, presence: true
+  validates :name, :email, :phone, :city, :district, presence: true
 end
