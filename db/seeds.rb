@@ -37,7 +37,8 @@ Animal.all.each do |animal|
   rand(1..5).times do |_|
     animal.communicators.create!(
       name: Faker::Name.name,
-      phone: Faker::PhoneNumber.cell_phone
+      phone: Faker::PhoneNumber.cell_phone,
+      occurrence: Faker::Lorem.paragraph_by_chars
     )
   end
 end

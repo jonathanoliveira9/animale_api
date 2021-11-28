@@ -16,4 +16,9 @@ RSpec.describe Communicator, type: :model do
     subject.phone = nil
     expect(subject).to_not be_valid
   end
+
+  it 'is not valid without occurrence' do
+    subject.occurrence = nil
+    expect(subject).to_not be_valid
+  end
 end
