@@ -25,8 +25,8 @@ RSpec.describe User, type: :model do
     subject.city = nil
     expect(subject).to_not be_valid
   end
-  it 'is not valid without country' do
-    subject.country = nil
+  it 'is not valid without district' do
+    subject.district = nil
     expect(subject).to_not be_valid
   end
 end

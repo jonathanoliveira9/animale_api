@@ -12,7 +12,7 @@ puts 'Creating Users'
   User.create(name: Faker::Name.name,
               email: Faker::Internet.email,
               city: Faker::JapaneseMedia::OnePiece.island,
-              country: Faker::JapaneseMedia::OnePiece.location,
+              district: Faker::JapaneseMedia::OnePiece.location,
               phone: Faker::PhoneNumber.cell_phone,
               password: password,
               password_confirmation: password)
