@@ -24,7 +24,7 @@ Rails.application.routes.draw do
           get :owner_pets
         end
       end
-      resources :communicators, only: %w[create]
+      resources :communicators, only: %w[create index]
     end
   end
 
