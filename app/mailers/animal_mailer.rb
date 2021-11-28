@@ -1,4 +1,5 @@
 class AnimalMailer < ApplicationMailer
+  helper AnimalsHelper
   default from: 'animale@test.com'
 
   def notify_changes(animal_id)

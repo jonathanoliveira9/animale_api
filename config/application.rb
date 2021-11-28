@@ -38,6 +38,7 @@ module AnimaleApi
     config.api_only = true
 
     config.active_job.queue_adapter = :sidekiq
+    config.i18n.default_locale = :'pt-BR'
 
     config.middleware.use Rack::Attack
   end

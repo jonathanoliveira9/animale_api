@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def register_success
-    render json: { message: 'Signed up successfully.' }
+    render json: { message: I18n.t('devise.registrations.signed_up') }
   end
 
   def register_failed
