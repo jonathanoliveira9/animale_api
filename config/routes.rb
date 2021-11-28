@@ -27,4 +27,6 @@ Rails.application.routes.draw do
       resources :communicators, only: %w[create]
     end
   end
+
+  root to: 'home#index'
 end
