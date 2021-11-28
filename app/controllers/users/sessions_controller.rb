@@ -10,12 +10,12 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def login_success
-    render json: { message: 'You are logged in',
+    render json: { message: I18n.t('devise.sessions.signed_in'),
                    user: UserSerializer.new(current_user).serializable_hash }, status: :ok
   end
 
   def login_failure
-    render json: { message: 'Failed to login' }, status: :unauthorized
+    render json: { message: I18n.t('devise.sessions.failed_signed') }, status: :unauthorized
   end
 
   def respond_to_on_destroy
@@ -25,11 +25,11 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def log_out_success
-    render json: { message: 'You are logged out.' }, status: :ok
+    render json: { message: I18n.t('devise.sessions.signed_out') }, status: :ok
   end
 
   def logout_out_failure
-    render json: { message: 'Failure to logout' }, status: :unauthorized
+    render json: { message: I18n('devise.sessions.failed_signed_out') }, status: :unauthorized
   end
 
   def nested_relationship
