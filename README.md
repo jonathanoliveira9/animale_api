@@ -5,6 +5,35 @@
 
 Animale is a plataform API to register animals forbidden.
 
+## Requirements
+
+The requirements to run this project include:
+* ruby-3.0.1
+
+## Instalation
+```
+Install Redis
+
+$ sudo apt install redis-server
+
+$ git clone https://github.com/jonathanoliveira9/animale_api.git
+
+$ bundle install
+
+$ rails db:create
+$ rails db:migrate
+$ rails s
+
+To start sidekiq
+
+$ bundle exec sidekiq
+
+To run tests
+
+$ bundle exec rspec spec
+```
+
+
 ## Authentication
 Access to the API is granted by providing your account registered. You can use Postman. Example bellow.
 
