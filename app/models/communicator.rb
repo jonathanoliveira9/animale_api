@@ -1,4 +1,4 @@
 class Communicator < ApplicationRecord
   belongs_to :animal
-  validates :name, :phone, presence: true
+  validates :name, :phone, :occurrence, presence: true
 end
