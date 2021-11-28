@@ -29,7 +29,13 @@ $ bundle exec sidekiq
 To run tests
 $ bundle exec rspec spec
 ```
-
+## Environment Variable
+```
+DATABASE_URL = XXXX
+REDIS_URL = XXXX
+SIDEKIQ_PASSWORD = XXXX
+SIDEKIQ_USERNAME = XXXX
+```
 
 ## Request API
 Access to the API is granted by providing your account registered. You can use Postman. Example bellow.
