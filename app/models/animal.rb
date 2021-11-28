@@ -6,7 +6,7 @@ class Animal < ApplicationRecord
 
   validates :name, :status, presence: true
 
-  after_save :notify_changes_status, if: proc { status_changed? }
+  before_save :notify_changes_status, if: proc { status_changed? }
 
   private
 
