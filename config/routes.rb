@@ -19,7 +19,11 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :animals, only: %w[index create update]
+      resources :animals, only: %w[index create update] do
+        collection do
+          get :owner_pets
+        end
+      end
       resources :communicators, only: %w[create]
     end
   end
