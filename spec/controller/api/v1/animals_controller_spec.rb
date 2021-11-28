@@ -8,11 +8,12 @@ RSpec.describe Api::V1::AnimalsController, type: :controller do
   describe 'GET #index' do
     it 'should show animals with status not found' do
       authenticated_header(request, user)
-      create_list(:animal, 5, :lost)
+      create_list(:animal, 20, :lost)
       get :index, format: :json
       expect(response).to have_http_status(:ok)
-      json_response = JSON.parse(response.body)
-      expect(json_response['data'].all? { |data| data['attributes']['status'].eql?('lost') }).to be_truthy
+      json_response = JSON.parse(response.body, symbolize_names: true)
+      expect(json_response[:data].all? { |d| d.dig(:attributes, :status).eql?('lost') }).to be_truthy
+      expect(json_response.dig(:links, :next)).to eq('/api/v1/animals?page=2')
     end
   end
 
