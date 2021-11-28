@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end if Rails.env.production?
 
   mount Sidekiq::Web => '/sidekiq'
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
