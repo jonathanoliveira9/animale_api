@@ -10,7 +10,7 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.jwt_secret_key
+    jwt.secret = ENV['jwt_secret_key']
     jwt.expiration_time = 1.weeks.to_i
   end
   # The secret key used by Devise. Devise uses this key to generate
