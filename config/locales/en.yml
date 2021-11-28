@@ -30,4 +30,27 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      user: User
+      animal: Animal
+      communicator: Communicator
+    attributes:
+      animal:
+        name: Name
+        age: Age
+        extra_information: Extra Information
+      user:
+        name: Name
+        phone: Phone
+        city: City
+        email: Email
+        district: District
+      communicator:
+        name: Name
+        phone: Phone
+        occurrence: Ocorrencia
+  helpers:
+    communicated: Communicated
+    found: Found
+    lost: Lost

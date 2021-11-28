@@ -4,6 +4,7 @@ pt-BR:
   activerecord:
     attributes:
       user:
+        city: City
         confirmation_sent_at: Confirmação enviada em
         confirmation_token: Token de confirmação
         confirmed_at: Confirmado em
@@ -11,14 +12,17 @@ pt-BR:
         current_password: Senha atual
         current_sign_in_at: Atualmente logado em
         current_sign_in_ip: IP do acesso atual
+        district: District
         email: E-mail
         encrypted_password: Senha criptografada
         failed_attempts: Tentativas sem sucesso
         last_sign_in_at: Último acesso em
         last_sign_in_ip: Último IP de acesso
         locked_at: Bloqueado em
+        name: Name
         password: Senha
         password_confirmation: Confirme sua senha
+        phone: Phone
         remember_created_at: Lembrar criado em
         remember_me: Lembre-se de mim
         reset_password_sent_at: Resetar senha enviado em
@@ -29,6 +33,8 @@ pt-BR:
         updated_at: Atualizado em
     models:
       user: Usuário
+      communicator: Comunicador
+      animal: Animal
   devise:
     confirmations:
       confirmed: A sua conta foi confirmada com sucesso.
@@ -145,3 +151,7 @@ pt-BR:
       not_saved:
         one: 'Não foi possível salvar %{resource}: 1 erro'
         other: 'Não foi possível salvar %{resource}: %{count} erros.'
+  helpers:
+    communicated: Comunicado
+    found: Encontrado
+    lost: Perdido
